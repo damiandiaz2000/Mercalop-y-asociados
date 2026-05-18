@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buró Jurídico Mercalóp & Asociados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Estilos Globales - Fondo Blanco y Acentos Corporativos */
+        :root {
+            --primary: #111827; /* Azul/Negro sobrio */
+            --accent: #b45309;  /* Dorado elegante para detalles */
+            --bg: #ffffff;      /* Fondo blanco puro */
+            --gray-light: #f9fafb;
+            --text: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .logo-text {
+            font-family: 'Cinzel', serif;
+            color: var(--primary);
+        }
+
+        /* Barra de Navegación */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid #e5e7eb;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo-subtitle {
+            font-size: 0.7rem;
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Secciones */
+        section {
+            padding: 100px 20px 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        /* Sección 1: Inicio & Corporativa */
+        .hero {
+            text-align: center;
+            padding: 160px 20px 100px 20px;
+            background: linear-gradient(to bottom, #f3f4f6, #ffffff);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            font-size: 1.1rem;
+            color: #4b5563;
+        }
+
+        .mision-box {
+            background-color: var(--gray-light);
+            border-left: 4px solid var(--accent);
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 4px;
+        }
+
+        .lawyers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .lawyer-card {
+            background: var(--gray-light);
+            border: 1px solid #e5e7eb;
+            padding: 30px;
+            border-radius: 6px;
+            transition: transform 0.3s;
+        }
+
+        .lawyer-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .lawyer-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+
+        .lawyer-card .role {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .lawyer-card ul {
+            list-style: none;
+            font-size: 0.85rem;
+            color: #4b5563;
+        }
+
+        .lawyer-card ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .lawyer-card ul li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Sección 2: Servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .service-box {
+            border: 1px solid #e5e7eb;
+            padding: 25px;
+            border-radius: 4px;
+            background: #fff;
+        }
+
+        .service-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            border-bottom: 1px solid #f3f4f6;
+            padding-bottom: 10px;
+        }
+
+        .service-box ul {
+            list-style: none;
+            font-size: 0.9rem;
+        }
+
+        .service-box ul li {
+            margin-bottom: 6px;
+            color: #4b5563;
+        }
+
+        /* Sección 3: Portal de Casos (Simulado) */
+        .portal-container {
+            background: var(--gray-light);
+            border: 1px solid #e5e7eb;
+            padding: 40px 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .search-bar {
+            max-width: 500px;
+            margin: 25px auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        .search-bar button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .search-bar button:hover {
+            background-color: #1f2937;
+        }
+
+        .cases-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .case-item {
+            background: #fff;
+            border: 1px dashed #cbd5e1;
+            padding: 20px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        /* Sección 4: Contacto */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 15px;
+        }
+
+        .contact-method {
+            margin-bottom: 20px;
+        }
+
+        .contact-method p {
+            font-size: 0.95rem;
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            background-color: #25d366;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128c7e;
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: #9ca3af;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85rem;
+            margin-top: 60px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            nav ul { display: none; } /* En producción agregarías un menú móvil */
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div>
+                <span class="logo-text">MERCALÓP</span>
+                <span class="logo-subtitle">& ASOCIADOS • BURÓ JURÍDICO</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#sentencias">Portal de Sentencias</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="inicio">
+        <section class="hero">
+            <h1>BURÓ JURÍDICO MERCALÓP & ASOCIADOS</h1>
+            <p>Constituido con solidez y trayectoria desde el año 2007. Brindamos asesoría jurídica de alto nivel con responsabilidad, seriedad y honestidad en la ciudad de Guayaquil.</p>
+            
+            <div class="mision-box">
+                <h3>Nuestra Misión</h3>
+                <p>“Orientar legalmente a nuestros clientes, así como en los procedimientos judiciales, administrativos o arbitrales que se nos encomienda con toda responsabilidad y seriedad, a efecto de alcanzar los objetivos delineados... logrando mediante la conciliación, la mediación o el arbitraje, un rápido y eficaz arreglo.”</p>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Nuestros Abogados & Trayectoria</h2>
+            <div class="lawyers-grid">
+                
+                <div class="lawyer-card">
+                    <h3>Msc. Ab. Pedro Rafael Merchán Miñán</h3>
+                    <div class="role">Director Jurídico Fundador</div>
+                    <ul>
+                        <li>Graduado con Premio Contenta (Promedio 9.80) en la Universidad de Guayaquil.</li>
+                        <li>Exmiembro del Directorio del Colegio de Abogados del Guayas.</li>
+                        <li>Ex Juez de Coactiva de CEDEGE e Inspector de Trabajo.</li>
+                        <li>Maestría en Derecho Constitucional, Penal, Administrativo y PhD.</li>
+                        <li>Actual Director Jurídico de FEDENADOR.</li>
+                    </ul>
+                </div>
+
+                <div class="lawyer-card">
+                    <h3>Msc. Ab. Richard Fabián Álvarez Gómez</h3>
+                    <div class="role">Gerente Administrativo Fundador</div>
+                    <ul>
+                        <li>Director de la Dirección Jurídica Logística del Buró.</li>
+                        <li>Exasistente Legal de CEDEGE (Área administrativa y de expropiación).</li>
+                        <li>Exasistente Legal del INEC y de FEDENADOR.</li>
+                        <li>Catedrático del Tecnológico UEES.</li>
+                    </ul>
+                </div>
+
+                <div class="lawyer-card">
+                    <h3>Cuerpo Profesional & Consultores</h3>
+                    <div class="role">Especialistas Asociados</div>
+                    <ul>
+                        <li><strong>Ab. Mirian Antonieta Rojas Mora</strong> (Gerente de Recursos Humanos)</li>
+                        <li><strong>Msc. Cristhian Mauricio Villalva Rojas</strong> (Especialista Familiar y Penal)</li>
+                        <li><strong>Steeven Javier Merchán Pérez</strong> (Dirección de Familia y Niñez)</li>
+                        <li>Adelantados profesionales graduados con las más altas notas académicas de la Universidad de Guayaquil.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <section id="servicios">
+        <h2 class="section-title">Áreas de Práctica</h2>
+        <div class="services-grid">
+            
+            <div class="service-box">
+                <h3>Civil</h3>
+                <ul>
+                    <li>• Recuperación de carteras y Juicios Ejecutivos.</li>
+                    <li>• Elaboración de todo tipo de contratos.</li>
+                    <li>• Inventarios, partición de bienes y divorcios.</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <h3>Penal & Tránsito</h3>
+                <ul>
+                    <li>• Denuncias y acusaciones particulares.</li>
+                    <li>• Defensas penales en todo tipo de infracciones de tránsito y generales.</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <h3>Laboral & IESS</h3>
+                <ul>
+                    <li>• Defensa y patrocinio en demandas laborales.</li>
+                    <li>• Despidos intempestivos, desahucios y vistos buenos.</li>
+                    <li>• Elaboración de comités de empresa y sindicatos.</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <h3>Trámites Especiales</h3>
+                <ul>
+                    <li>• Recursos Constitucionales ante la Corte Constitucional.</li>
+                    <li>• Trámites de Propiedad Intelectual, Marcas y Patentes en el IEPI.</li>
+                    <li>• Obtención de registros sanitarios en Guayaquil.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="sentencias">
+        <h2 class="section-title">Portal de Sentencias y Casos</h2>
+        <div class="portal-container">
+            <p>Espacio institucional reservado para la consulta de resoluciones y dictámenes ganados por nuestra firma. Ingrese el código del caso proporcionado por su abogado consultor.</p>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Ej. EXP-2026-N04..." id="caseInput">
+                <button onclick="alert('Funcionalidad de prueba para la Demo. El sistema se conectará a la base de datos final en su Hosting.')">Buscar</button>
+            </div>
+
+            <div class="cases-gallery">
+                <div class="case-item">
+                    <strong>Caso #001 - Civil</strong><br>
+                    [Vista previa del documento protegida]
+                </div>
+                <div class="case-item">
+                    <strong>Caso #002 - Constitucional</strong><br>
+                    [Vista previa del documento protegida]
+                </div>
+                <div class="case-item">
+                    <strong>Caso #003 - Laboral</strong><br>
+                    [Vista previa del documento protegida]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <h2 class="section-title">Información de Contacto</h2>
+        <div class="contact-grid">
+            
+            <div class="contact-info">
+                <h3>Nuestras Oficinas en Guayaquil</h3>
+                <div class="contact-method">
+                    <strong>📍 Oficina Centro (Principal):</strong>
+                    <p>Aguirre No. 1505 y José de Antepara.</p>
+                </div>
+                <div class="contact-method">
+                    <strong>📍 Oficina Sur:</strong>
+                    <p>Cdla. Los Esteros Mz. 8ª Villa. 29.</p>
+                </div>
+                <div class="contact-method">
+                    <strong>⏰ Horario de Atención:</strong>
+                    <p>Lunes a Viernes de 09H00 a 17H00 (Previa cita). Emergencias los fines de semana.</p>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <h3>Canales Directos</h3>
+                <div class="contact-method">
+                    <strong>📞 Teléfonos Generales:</strong>
+                    <p>0993094887 / 0993084874</p>
+                </div>
+                <div class="contact-method">
+                    <strong>📧 Correos Electrónicos:</strong>
+                    <p>ab.merchanm@mercalop.com<br>notificaciones@mercalop.com</p>
+                </div>
+                
+                <a href="https://wa.me/593993094887?text=Hola%20Buró%20Jurídico%20Mercalóp,%20solicito%20una%20consulta%20legal." class="btn-whatsapp" target="_blank">
+                    💬 Contactar Abogado vía WhatsApp
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Buró Jurídico MERCALÓP & ASOCIADOS. Todos los derechos reservados. | Diseñado por Pixel & Data</p>
+    </footer>
+
+</body>
+</html>
